@@ -1,7 +1,6 @@
 {
   "name": "react",
   "private": true,
-  "homepage": "https://lukasemperfi.github.io/battleship/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -11,9 +10,7 @@
     "test": "jest",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "eslint src",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "lint": "eslint src"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
