@@ -1,7 +1,3 @@
-import { AppRouter } from "./navigation/AppRouter";
+import { GamePage } from "./pages/GamePage";
 
-export const App = (): JSX.Element => (
-  <>
-    <AppRouter />
-  </>
-);
+export const App = (): JSX.Element => <GamePage />;
