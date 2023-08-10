@@ -1,0 +1,41 @@
+@use "@/styles/variables" as *;
+
+// @mixin h1 {
+//   font-size: $fontSizes-8xl;
+//   font-weight: $fontWeights-light;
+//   line-height: $lineHeights-none;
+// }
+// @mixin h2 {
+//   font-size: $fontSizes-6xl;
+//   font-weight: $fontWeights-light;
+//   line-height: $lineHeights-none;
+// }
+// @mixin h3 {
+//   font-size: $fontSizes-5xl;
+//   font-weight: $fontWeights-normal;
+//   line-height: $lineHeights-none;
+// }
+// @mixin h4 {
+//   font-size: $fontSizes-4xl;
+//   font-weight: $fontWeights-normal;
+//   line-height: $lineHeights-shorter;
+// }
+
+// @mixin h5 {
+//   font-size: $fontSizes-2xl;
+//   font-weight: $fontWeights-normal;
+//   line-height: $lineHeights-shorter;
+// }
+
+// @mixin h6 {
+//   font-size: $fontSizes-xl;
+//   font-weight: $fontWeights-medium;
+//   line-height: $lineHeights-shorter;
+// }
+
+@mixin text-6xl {
+  font-size: $fontSizes-6xl;
+}
+@mixin text-md {
+  font-size: $fontSizes-md;
+}

@@ -1,0 +1,4 @@
+node_modules
+build
+src/vite-env.d.ts
+src/__mocks__/svgrMock.js
