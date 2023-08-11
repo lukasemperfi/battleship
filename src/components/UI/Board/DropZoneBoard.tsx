@@ -1,22 +1,13 @@
-import React, {
-  FC,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FC, useCallback, useState } from "react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "@/ItemTypes";
 import { Board, BoardProps } from "./Board";
 import { useDomRect } from "@/hooks/useDomRect";
-import { SHIP_SIDE } from "@/config/gameConfig";
 import { ShipDragPreview } from "../Ship/ShipDragPreview";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
   moveShipOnBoard,
   placeShipOnBoardFromOutside,
-  setSelectedShip,
 } from "@/store/playerBoardSlice";
 
 import { Matrix } from "@/services/board/boardTypes";
@@ -24,10 +15,9 @@ import { Ship, ShipPlacement } from "@/services/ships/shipsTypes";
 import {
   calculateShipCoords,
   canDropShip,
-  getIndexCoords,
 } from "@/services/placement/placementService";
 import { selectGameState } from "@/store/gameSlice";
-import { BoardField, BoardFieldProps } from "./BoardField";
+import { BoardField } from "./BoardField";
 import { BoardShips } from "./BoardShips";
 
 interface DropZoneBoardProps extends BoardProps {

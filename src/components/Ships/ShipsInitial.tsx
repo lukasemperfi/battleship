@@ -33,7 +33,6 @@ export const ShipsInitial: FC<ShipsInitialProps> = ({ ships }) => {
       .filter((ship) => ship.coords.length === shipCount)
       .map((ship, i) => {
         return (
-          // <ShipWrapper left={gap * i + ship.width * i} key={ship.id}>
           <ShipWrapper width={ship.width} key={ship.id}>
             {!ship.isShipPlaced && <DraggableShip draggableItem={ship} />}
           </ShipWrapper>

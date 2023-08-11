@@ -6,13 +6,10 @@ import {
 import { RootReducers } from "./rootReducers";
 import { RootState } from "./store";
 
-import { ShipData } from "@/config/gameConfig";
 
 import {
   createBoardMatrix,
   markSunkShipArea,
-  placeShipOnBoard,
-  removeShipFromBoard,
 } from "@/services/board/boardService";
 import {
   generateRandomBoardAndShips,
@@ -20,7 +17,6 @@ import {
   updateShipPositionOnBoard,
   addShipToBoard,
 } from "@/services/game/gameService";
-import { ShipCoordsAndPosition } from "@/services/placement/placementTypes";
 import {
   Ship,
   ShipCoord,
@@ -91,7 +87,6 @@ const initialState: PlayerBoardState = {
   targetShipHitCoords: null,
 };
 
-// const PlayerBoardReducers: ValidateSliceCaseReducers<PlayerBoardState, PlayerBoardReducers> = {};
 
 export const playerBoard = createSlice<
   PlayerBoardState,
@@ -105,7 +100,6 @@ export const playerBoard = createSlice<
       state.initialShips = [];
       const [newBoard, newShips] = generateRandomBoardAndShips();
 
-      // state.board = createBoardMatrix(ShotResult.Empty, 10);
 
       state.board = newBoard;
       state.ships = newShips;

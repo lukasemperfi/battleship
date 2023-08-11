@@ -6,25 +6,16 @@ import {
 import { RootReducers } from "./rootReducers";
 import { RootState } from "./store";
 
-import { ShipData } from "@/config/gameConfig";
 
 import {
   createBoardMatrix,
-  getAreaCoords,
   markSunkShipArea,
-  placeShipOnBoard,
-  removeShipFromBoard,
 } from "@/services/board/boardService";
 import {
   generateRandomBoardAndShips,
-  generateInitialShips,
-  updateShipPositionOnBoard,
-  addShipToBoard,
 } from "@/services/game/gameService";
-import { ShipCoordsAndPosition } from "@/services/placement/placementTypes";
-import { Ship, ShipCoord, ShipPlacement } from "@/services/ships/shipsTypes";
+import { Ship, ShipCoord } from "@/services/ships/shipsTypes";
 import { Matrix, ShotResult } from "@/services/board/boardTypes";
-import { deepClone } from "@/utils/commonUtils";
 
 interface ComputerBoardReducers extends SliceCaseReducers<ComputerBoardState> {
   randomlyPlaceShips: (

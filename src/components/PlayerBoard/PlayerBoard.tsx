@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { DropZoneBoard } from "../UI/Board/DropZoneBoard";
-import { BoardField } from "@/components/UI/Board";
 import {
   clearBoard,
   createInitialShips,
@@ -27,7 +26,6 @@ const Wrapper = styled.div<{ isGameStarted: boolean }>`
   gap: 33px;
   width: ${({ isGameStarted }) => (isGameStarted ? "auto" : "100%")};
   justify-content: space-between;
-  // overflow: hidden;
 `;
 
 const Button = styled.button`
@@ -38,11 +36,6 @@ const Button = styled.button`
 
 const InitialShipsWrapper = styled.div`
   position: relative;
-  // top: 27px;
-  // left: 9px;
-
-  // top: 38px;
-  // left: 11px;
 `;
 
 const Container = styled.div`
@@ -50,7 +43,6 @@ const Container = styled.div`
   height: 330px;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   gap: 33px;
 `;
 
@@ -58,19 +50,14 @@ const ShipControls = styled.div`
   display: flex;
   gap: 33px;
   margin-top: auto;
-  // justify-content: space-between;
 `;
 
 export const PlayerBoard = (): JSX.Element => {
   const { board, ships, initialShips, selectedShip } = useAppSelector(
     selectPlayerBoardState
   );
-  const { isGameStarted, isGameOver, currentPlayer } =
-    useAppSelector(selectGameState);
+  const { isGameStarted, currentPlayer } = useAppSelector(selectGameState);
   const dispatch = useAppDispatch();
-  // console.log("board", board);
-  // console.log("ships", ships);
-  // console.log("initialShips", initialShips);
 
   useEffect(() => {
     if (ships.length === 0) {

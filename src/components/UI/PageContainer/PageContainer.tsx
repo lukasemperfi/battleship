@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC } from "react";
+import { ComponentPropsWithoutRef, FC } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`

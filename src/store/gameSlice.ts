@@ -16,7 +16,6 @@ interface GameState {
   isGameOver: boolean;
   currentPlayer: CurrentPlayer;
   winner: CurrentPlayer | null;
-  moveCount: number;
 }
 
 const initialState: GameState = {
@@ -24,7 +23,6 @@ const initialState: GameState = {
   isGameOver: false,
   currentPlayer: CurrentPlayer.PLAYER,
   winner: null,
-  moveCount: 0,
 };
 
 interface GameReducers extends SliceCaseReducers<GameState> {
@@ -35,7 +33,6 @@ interface GameReducers extends SliceCaseReducers<GameState> {
     action: PayloadAction<CurrentPlayer>
   ) => void;
   setWinner: (state: GameState, action: PayloadAction<CurrentPlayer>) => void;
-  increaseMoveCount: (state: GameState) => void;
   resetGameState: (state: GameState) => void;
 }
 
@@ -55,18 +52,11 @@ export const game = createSlice<GameState, GameReducers, RootReducers>({
     setWinner: (state, { payload: winner }) => {
       state.winner = winner;
     },
-    increaseMoveCount: (state) => {
-      state.moveCount++;
-    },
-    setMoveCount: (state, { payload: count }) => {
-      state.moveCount = count;
-    },
     resetGameState: (state) => {
       state.currentPlayer = CurrentPlayer.PLAYER;
       state.isGameOver = false;
       state.isGameStarted = false;
       state.winner = null;
-      state.moveCount = 0;
     },
   },
 });

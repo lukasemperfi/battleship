@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import  { FC } from "react";
 import styled, { css } from "styled-components";
 import { Ship as ShipView } from "./Ship";
 import { ShipWrapper } from "./ShipWrapper";
@@ -13,7 +13,6 @@ import {
 } from "@/store/playerBoardSlice";
 import { ItemTypes } from "@/ItemTypes";
 
-//  box-shadow: 0 0 4px 4px rgb(0 128 0 / 58%);
 
 const canDropStyle = css`
   box-shadow: 0 0 4px 4px rgb(0 128 0 / 58%);
@@ -36,11 +35,8 @@ const Wrapper = styled.div`
 interface DragLayerProps {
   item: Ship | null;
   itemType: string | symbol | null;
-  initialOffset: XYCoord | null;
   itemOffset: XYCoord | null;
   isDragging: boolean;
-  delta: XYCoord | null;
-  sourceClientOffset: XYCoord | null;
 }
 
 interface ShipDragPreviewProps {
@@ -55,23 +51,15 @@ export const ShipDragPreview: FC<ShipDragPreviewProps> = ({
   const {
     item,
     itemType,
-    initialOffset,
     itemOffset,
     isDragging,
-    delta,
-    sourceClientOffset,
   } = useDragLayer<DragLayerProps, any>((monitor) => ({
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
-    initialOffset: monitor.getInitialSourceClientOffset(),
     itemOffset: monitor.getSourceClientOffset(),
     isDragging: monitor.isDragging(),
-    delta: monitor.getDifferenceFromInitialOffset(),
-    sourceClientOffset: monitor.getSourceClientOffset(),
   }));
 
-  const selectedShip = useAppSelector(selectSelectedShip);
-  const isRotationAllowed = useAppSelector(selectIsRotationNotAllowed);
 
   if (!isDragging || itemType !== ItemTypes.SHIP) {
     return null;

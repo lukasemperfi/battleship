@@ -1,7 +1,6 @@
 import { type FC } from "react";
 import styled, { FlattenSimpleInterpolation } from "styled-components";
 
-import { SHIP_SIDE } from "@/config/gameConfig";
 
 
 export interface ShipProps {
@@ -16,7 +15,6 @@ const Container = styled.div.attrs<ShipProps>(({ width }) => ({
 }))<ShipProps>`
   height: 33px;
   border: 2px solid #0c0ce5;
-  // background-color: yellow;
   ${(props) => props.styles};
 `;
 

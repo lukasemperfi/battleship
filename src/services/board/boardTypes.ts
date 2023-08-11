@@ -1,8 +1,8 @@
 enum ShotResult {
-  Hit = "hit",
-  Miss = "miss",
-  Empty = "□",
-  Ship = "■",
+  Hit = 3,
+  Miss = 1,
+  Empty = 0,
+  Ship = 2,
 }
 
 type Matrix = ShotResult[][];

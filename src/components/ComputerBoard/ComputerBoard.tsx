@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { Board, BoardField } from "../UI/Board";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
@@ -28,7 +28,6 @@ export const ComputerBoard = () => {
     }
   }, [isGameStarted]);
 
-  // TODO: Сделать одну функцию
   const onCellClick = (coords: ShipCoord, shotResult: ShotResult): void => {
     if (isGameOver) {
       return;
@@ -46,10 +45,7 @@ export const ComputerBoard = () => {
     }
   };
 
-  // console.log("computer board: ", board);
-
   const sunkShips = ships.filter((ship) => ship.hits === ship.coords.length);
-  // console.log("comp board render");
 
   return (
     <Board currentPlayer={CurrentPlayer.COMPUTER} activePlayer={currentPlayer}>

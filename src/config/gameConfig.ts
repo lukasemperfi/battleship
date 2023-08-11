@@ -1,5 +1,3 @@
-import shipImage from "@/assets/img/sprite.png";
-
 enum ShipName {
   Battleship = "battleship",
   Cruiser = "cruiser",

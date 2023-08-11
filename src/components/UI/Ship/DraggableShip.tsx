@@ -1,16 +1,14 @@
-import React, { FC, useEffect } from "react";
-import styled, { css, keyframes } from "styled-components";
+import { FC, useEffect } from "react";
+import { css } from "styled-components";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "@/ItemTypes";
 
-import { SHIP_SIDE } from "@/config/gameConfig";
 import { ShipWrapper } from "./ShipWrapper";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { Ship as ShipView } from "./Ship";
 import { Ship, ShipOrientation } from "@/services/ships/shipsTypes";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
-  selectIsRotationNotAllowed,
   selectSelectedShip,
   setIsRotationNotAllowed,
   setSelectedShip,
@@ -28,16 +26,8 @@ export interface DraggableItemPosition {
   orientation: ShipOrientation;
 }
 
-// export interface DraggableItem {
-//   id: string;
-//   position: DraggableItemPosition;
-//   width: number;
-//   coords: number[][];
-// }
-
 interface CollectProps {
   isDragging: boolean;
-  currentShip: Ship;
 }
 
 export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
@@ -51,18 +41,13 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
     width,
   } = draggableItem;
 
-  const [{ isDragging, currentShip }, drag, preview] = useDrag<
-    Ship,
-    unknown,
-    CollectProps
-  >(
+  const [{ isDragging }, drag, preview] = useDrag<Ship, unknown, CollectProps>(
     () => ({
       type: ItemTypes.SHIP,
       item: draggableItem,
 
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
-        currentShip: monitor.getItem(),
       }),
       canDrag: () => !isGameStarted,
     }),
@@ -71,12 +56,12 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
 
   const getShipWrapperStyles = () => {
     const isSelectedShip = draggableItem.id === selectedShip?.id;
-    const isDecksMoreOne = draggableItem.coords.length > 1
+    const isDecksMoreOne = draggableItem.coords.length > 1;
 
     return css`
       opacity: ${isDragging ? "0" : "1"};
       height: ${isDragging ? "0" : "auto"};
-      border-radius: ${isDecksMoreOne ? '15px' : '5px'};
+      border-radius: ${isDecksMoreOne ? "15px" : "5px"};
       box-shadow: ${isSelectedShip
         ? "0 0 4px 4px rgb(115 135 247 / 58%)"
         : "none"};
@@ -84,10 +69,10 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
   };
 
   const getShipViewStyles = () => {
-    const isDecksMoreOne = draggableItem.coords.length > 1
+    const isDecksMoreOne = draggableItem.coords.length > 1;
 
     return css`
-      border-radius: ${isDecksMoreOne ? '15px' : '5px'};
+      border-radius: ${isDecksMoreOne ? "15px" : "5px"};
     `;
   };
 

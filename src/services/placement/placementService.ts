@@ -1,10 +1,8 @@
 import { CELL_BORDER, SHIP_SIDE } from "@/config/gameConfig";
 import { checkLocationShip, removeShipFromBoard } from "../board/boardService";
 import { deepClone } from "@/utils/commonUtils";
-import { getShipCoords } from "../ships/shipsService";
 import {
   DropTargetMonitor,
-  ShipCoordsAndPosition,
   XYCoord,
 } from "./placementTypes";
 import { Matrix, ShotResult } from "../board/boardTypes";
@@ -92,7 +90,6 @@ const canRotateShip = (board: Matrix, currentShip: Ship): boolean => {
     orientation,
   };
 
-  // const currentShipCoords = getShipCoords(currentShip.placement, shipDecks);
   const updatedBoard = removeShipFromBoard(boardClone, currentShip.coords);
 
   return checkLocationShip(updatedBoard, shipPlacement, shipDecks);
@@ -112,14 +109,6 @@ const calculateShipCoords = (
 
   const { x, y } = startIndexCoords;
 
-  // const shipCoords = getShipCoords(
-  //   x,
-  //   y,
-  //   currentShip.coords.length,
-  //   currentShip.placement.orientation
-  // );
-
-  // const shipPosition = convertIndexesToPixels(x, y);
 
   return {
     x,

@@ -1,8 +1,6 @@
-import { SHIP_DATA, ShipData } from "@/config/gameConfig";
+import { SHIP_DATA } from "@/config/gameConfig";
 import {
-  checkLocationShip,
   generateValidShipPlacement,
-  getAreaCoords,
   placeShipOnBoard,
   removeShipFromBoard,
 } from "@/services/board/boardService";
@@ -10,21 +8,17 @@ import {
   addShip,
   createShip,
   getShipCoords,
-  updateShip,
   updateShips,
 } from "@/services/ships/shipsService";
 import {
   Ship,
   ShipOrientation,
   ShipPlacement,
-  ShipPosition,
 } from "@/services/ships/shipsTypes";
 import { placeShips } from "./gameUtils";
 import { Matrix, ShotResult } from "../board/boardTypes";
-import { ShipCoordsAndPosition } from "../placement/placementTypes";
 import { convertIndexesToPixels } from "../placement/placementService";
 import { BoardAndShips } from "./gameTypes";
-import { deepClone } from "@/utils/commonUtils";
 
 const generateRandomBoardAndShips = (): BoardAndShips =>
   placeShips(SHIP_DATA, (shipInfo, matrix) => {

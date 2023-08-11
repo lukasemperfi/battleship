@@ -1,8 +1,6 @@
 import { CELL_BORDER, ShipData } from "@/config/gameConfig";
 import { v4 as uuidv4 } from "uuid";
 import { createArrayFromFunction, deepClone } from "@/utils/commonUtils";
-import { DropTargetMonitor } from "react-dnd";
-import { calculateShipCoords } from "../placement/placementService";
 import {
   ShipPlacement,
   ShipDimensions,
@@ -10,7 +8,6 @@ import {
   ShipOrientation,
   Ship,
 } from "./shipsTypes";
-import { ShipCoordsAndPosition } from "../placement/placementTypes";
 
 const getShipDimensions = (
   side: number,
@@ -101,11 +98,9 @@ const updateShips = (
 };
 
 const addShip = (ships: Ship[], newShip: Ship): Ship[] => {
-  // console.log("addShip", ships, newShip);
 
   const isShipExists = ships.some((ship) => ship.id === newShip.id);
 
-  // console.log("addShip is", isShipExists);
 
   if (isShipExists) {
     return ships;
@@ -114,24 +109,5 @@ const addShip = (ships: Ship[], newShip: Ship): Ship[] => {
   return [...ships, newShip];
 };
 
-// const updateShipWithNewCoordsAndPosition = (
-//   currentShip: Ship,
-//   boardPosition: DOMRect | null,
-//   monitor: DropTargetMonitor
-// ): Ship => {
-//   // получить новые координаты корабля
-//   const { shipCoords, shipPosition } = calculateShipCoords(
-//     currentShip,
-//     monitor,
-//     boardPosition
-//   );
-//   // обновить данные корабля
-//   const updatedShip = updateShip(currentShip, {
-//     coords: shipCoords,
-//     position: shipPosition,
-//   });
-
-//   return updatedShip;
-// };
 
 export { createShip, getShipCoords, addShip, updateShip, updateShips };
