@@ -1,25 +1,10 @@
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { DropZoneBoard } from "../UI/Board/DropZoneBoard";
-import {
-  clearBoard,
-  createInitialShips,
-  moveShipOnBoard,
-  randomlyPlaceShips,
-  selectPlayerBoardState,
-  setIsRotationNotAllowed,
-  setSelectedShip,
-} from "@/store/playerBoardSlice";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { ShipsInitial } from "../Ships/ShipsInitial";
-import {
-  canRotateShip,
-  toogleRotate,
-} from "@/services/placement/placementService";
-import { CurrentPlayer, selectGameState } from "@/store/gameSlice";
 import { ReactComponent as RotateIcon } from "@/assets/icons/rotate.svg";
 import { ReactComponent as RandomIcon } from "@/assets/icons/random.svg";
 import { ReactComponent as RefreshIcon } from "@/assets/icons/refresh.svg";
+import { usePlayerBoard } from "./usePlayerBoard";
 
 const Wrapper = styled.div<{ isGameStarted: boolean }>`
   display: flex;
@@ -53,77 +38,29 @@ const ShipControls = styled.div`
 `;
 
 export const PlayerBoard = (): JSX.Element => {
-  const { board, ships, initialShips, selectedShip } = useAppSelector(
-    selectPlayerBoardState
-  );
-  const { isGameStarted, currentPlayer } = useAppSelector(selectGameState);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (ships.length === 0) {
-      dispatch(createInitialShips());
-    }
-  }, [ships]);
-
-  const randomlyPlaceShipsHandler = () => {
-    dispatch(randomlyPlaceShips());
-  };
-
-  const rotateShip = () => {
-    if (!selectedShip) {
-      return;
-    }
-
-    const shipDecks = selectedShip.coords.length;
-    const {
-      placement: { x, y, orientation },
-    } = selectedShip;
-
-    if (shipDecks === 1) {
-      return;
-    }
-
-    const shipPlacement = {
-      x,
-      y,
-      orientation: toogleRotate(orientation),
-    };
-
-    const isRotationPossible = canRotateShip(board, selectedShip);
-
-    if (!isRotationPossible) {
-      dispatch(setIsRotationNotAllowed(true));
-    } else {
-      dispatch(moveShipOnBoard({ currentShip: selectedShip, shipPlacement }));
-    }
-  };
-
-  const resetShipPlacement = () => {
-    if (ships.length === 0) {
-      return;
-    }
-    dispatch(clearBoard());
-  };
-
-  useEffect(() => {
-    if (isGameStarted) {
-      dispatch(setSelectedShip(null));
-    }
-  }, [isGameStarted]);
-
-  const boardCurrentPlayer = isGameStarted ? CurrentPlayer.PLAYER : undefined;
+  const {
+    isGameStarted,
+    playerBoard,
+    playerShips,
+    playerBoardCurrentPlayer,
+    currentPlayer,
+    initialShips,
+    randomlyPlaceShipsHandler,
+    rotateShip,
+    resetShipPlacement,
+  } = usePlayerBoard();
 
   return (
     <Wrapper isGameStarted={isGameStarted}>
       <DropZoneBoard
-        board={board}
-        ships={ships}
-        currentPlayer={boardCurrentPlayer}
+        board={playerBoard}
+        ships={playerShips}
+        currentPlayer={playerBoardCurrentPlayer}
         activePlayer={currentPlayer}
       />
       {!isGameStarted && (
         <Container>
-          {ships.length < 10 && (
+          {playerShips.length < 10 && (
             <InitialShipsWrapper>
               <ShipsInitial ships={initialShips} />
             </InitialShipsWrapper>
