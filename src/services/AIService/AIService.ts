@@ -1,6 +1,10 @@
-import { Matrix, ShotResult } from "../board/boardTypes";
+import { type Matrix, ShotResult } from "../board/boardTypes";
 import { deepClone, delay, generateRandomNumber } from "@/utils/commonUtils";
-import { ShipCoord, ShipCoords, ShipOrientation } from "../ships/shipsTypes";
+import {
+  type ShipCoord,
+  type ShipCoords,
+  ShipOrientation,
+} from "../ships/shipsTypes";
 import { DifficultyLevel } from "./AIServiceTypes";
 
 const getRandomShotCoords = (board: Matrix): ShipCoord | null => {
@@ -22,10 +26,10 @@ const getRandomShotCoords = (board: Matrix): ShipCoord | null => {
   return validShots[randomIndex];
 };
 
-const isValidCoordsRange = (x: number, y: number) =>
+const isValidCoordsRange = (x: number, y: number): boolean =>
   x >= 0 && x <= 9 && y >= 0 && y <= 9;
 
-const isCellValidForShot = (board: Matrix, x: number, y: number) =>
+const isCellValidForShot = (board: Matrix, x: number, y: number): boolean =>
   board[x][y] === ShotResult.Empty || board[x][y] === ShotResult.Ship;
 
 const getShotCoordsAroundHit = (
@@ -55,7 +59,7 @@ const getShotCoordsAroundHit = (
   };
 
   let validCoords: ShipCoords = [];
-  const getValidCoords = (possibleHitCoords: ShipCoords) => {
+  const getValidCoords = (possibleHitCoords: ShipCoords): number[][] => {
     return possibleHitCoords.filter(
       ([x, y]) => isValidCoordsRange(x, y) && isCellValidForShot(board, x, y)
     );

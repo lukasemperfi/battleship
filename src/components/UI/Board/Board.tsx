@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-import boardBackgroundImg from "@/assets/img/bg_play_field.png";
-import { forwardRef, type FC, type ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 import { createContext } from "@/hooks/context";
 import { ReactComponent as AIIcon } from "@/assets/icons/ai.svg";
 import { ReactComponent as PlayerIcon } from "@/assets/icons/player.svg";

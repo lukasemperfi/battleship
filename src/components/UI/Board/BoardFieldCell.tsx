@@ -1,6 +1,6 @@
 import { ShotResult } from "@/services/board/boardTypes";
-import { ShipCoord } from "@/services/ships/shipsTypes";
-import { ComponentPropsWithoutRef, FC, memo } from "react";
+import { type ShipCoord } from "@/services/ships/shipsTypes";
+import { type ComponentPropsWithoutRef, type FC, memo } from "react";
 import styled from "styled-components";
 import { ReactComponent as CircleIcon } from "@/assets/icons/circle.svg";
 import { ReactComponent as CrossIcon } from "@/assets/icons/cross.svg";

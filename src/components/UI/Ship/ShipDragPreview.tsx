@@ -1,10 +1,10 @@
-import  { FC } from "react";
-import styled, { css } from "styled-components";
+import { type FC } from "react";
+import styled, { FlattenSimpleInterpolation, css } from "styled-components";
 import { Ship as ShipView } from "./Ship";
 import { ShipWrapper } from "./ShipWrapper";
-import { XYCoord, useDragLayer } from "react-dnd";
-import { Matrix } from "@/services/board/boardTypes";
-import { Ship } from "@/services/ships/shipsTypes";
+import { type XYCoord, useDragLayer } from "react-dnd";
+import { type Matrix } from "@/services/board/boardTypes";
+import { type Ship } from "@/services/ships/shipsTypes";
 import { canDropShip } from "@/services/placement/placementService";
 import { useAppSelector } from "@/hooks/redux";
 import {
@@ -12,7 +12,6 @@ import {
   selectSelectedShip,
 } from "@/store/playerBoardSlice";
 import { ItemTypes } from "@/ItemTypes";
-
 
 const canDropStyle = css`
   box-shadow: 0 0 4px 4px rgb(0 128 0 / 58%);
@@ -48,18 +47,15 @@ export const ShipDragPreview: FC<ShipDragPreviewProps> = ({
   board,
   boardPosition,
 }) => {
-  const {
-    item,
-    itemType,
-    itemOffset,
-    isDragging,
-  } = useDragLayer<DragLayerProps, any>((monitor) => ({
+  const { item, itemType, itemOffset, isDragging } = useDragLayer<
+    DragLayerProps,
+    any
+  >((monitor) => ({
     item: monitor.getItem(),
     itemType: monitor.getItemType(),
     itemOffset: monitor.getSourceClientOffset(),
     isDragging: monitor.isDragging(),
   }));
-
 
   if (!isDragging || itemType !== ItemTypes.SHIP) {
     return null;
@@ -74,7 +70,7 @@ export const ShipDragPreview: FC<ShipDragPreviewProps> = ({
     return { top: y, left: x, orientation: item.placement.orientation };
   };
 
-  const getStyles = () => {
+  const getStyles = (): FlattenSimpleInterpolation | undefined => {
     if (!item) {
       return;
     }

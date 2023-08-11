@@ -2,14 +2,14 @@ import { CELL_BORDER, SHIP_SIDE } from "@/config/gameConfig";
 import { checkLocationShip, removeShipFromBoard } from "../board/boardService";
 import { deepClone } from "@/utils/commonUtils";
 import {
-  DropTargetMonitor,
-  XYCoord,
+  type DropTargetMonitor,
+  type XYCoord,
 } from "./placementTypes";
-import { Matrix, ShotResult } from "../board/boardTypes";
+import { type Matrix, type ShotResult } from "../board/boardTypes";
 import {
-  ShipPosition,
-  Ship,
-  ShipPlacement,
+  type ShipPosition,
+  type Ship,
+  type ShipPlacement,
   ShipOrientation,
 } from "../ships/shipsTypes";
 
@@ -108,7 +108,6 @@ const calculateShipCoords = (
   }
 
   const { x, y } = startIndexCoords;
-
 
   return {
     x,

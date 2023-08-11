@@ -1,5 +1,5 @@
-import { ShotResult } from "../board/boardTypes";
-import { ShipCoord } from "../ships/shipsTypes";
+import { type ShotResult } from "../board/boardTypes";
+import { type ShipCoord } from "../ships/shipsTypes";
 
 enum DifficultyLevel {
   EASY = "easy",

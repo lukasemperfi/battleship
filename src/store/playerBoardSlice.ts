@@ -1,11 +1,10 @@
 import {
-  PayloadAction,
-  SliceCaseReducers,
+  type PayloadAction,
+  type SliceCaseReducers,
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootReducers } from "./rootReducers";
-import { RootState } from "./store";
-
+import { type RootState } from "./store";
 
 import {
   createBoardMatrix,
@@ -18,12 +17,12 @@ import {
   addShipToBoard,
 } from "@/services/game/gameService";
 import {
-  Ship,
-  ShipCoord,
-  ShipCoords,
-  ShipPlacement,
+  type Ship,
+  type ShipCoord,
+  type ShipCoords,
+  type ShipPlacement,
 } from "@/services/ships/shipsTypes";
-import { Matrix, ShotResult } from "@/services/board/boardTypes";
+import { type Matrix, type ShotResult } from "@/services/board/boardTypes";
 
 interface PlayerBoardReducers extends SliceCaseReducers<PlayerBoardState> {
   randomlyPlaceShips: (
@@ -87,11 +86,10 @@ const initialState: PlayerBoardState = {
   targetShipHitCoords: null,
 };
 
-
 export const playerBoard = createSlice<
-  PlayerBoardState,
-  PlayerBoardReducers,
-  RootReducers
+PlayerBoardState,
+PlayerBoardReducers,
+RootReducers
 >({
   name: RootReducers.PLAYER_BOARD,
   initialState,
@@ -99,7 +97,6 @@ export const playerBoard = createSlice<
     randomlyPlaceShips: (state) => {
       state.initialShips = [];
       const [newBoard, newShips] = generateRandomBoardAndShips();
-
 
       state.board = newBoard;
       state.ships = newShips;
@@ -215,10 +212,11 @@ export const {
   resetPlayerBoardState,
 } = playerBoard.actions;
 
-export const selectPlayerBoardState = (state: RootState) => state.playerBoard;
-export const selectSelectedShip = (state: RootState) =>
+export const selectPlayerBoardState = (state: RootState): PlayerBoardState =>
+  state.playerBoard;
+export const selectSelectedShip = (state: RootState): Ship | null =>
   state.playerBoard.selectedShip;
-export const selectIsRotationNotAllowed = (state: RootState) =>
+export const selectIsRotationNotAllowed = (state: RootState): boolean =>
   state.playerBoard.isRotationNotAllowed;
 
 export const playerBoardSlice = playerBoard.reducer;

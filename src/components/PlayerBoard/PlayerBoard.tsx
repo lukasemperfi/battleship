@@ -1,10 +1,10 @@
-import { DropZoneBoard } from "../UI/Board/DropZoneBoard";
 import styled from "styled-components";
-import { ShipsInitial } from "../Ships/ShipsInitial";
 import { ReactComponent as RotateIcon } from "@/assets/icons/rotate.svg";
 import { ReactComponent as RandomIcon } from "@/assets/icons/random.svg";
 import { ReactComponent as RefreshIcon } from "@/assets/icons/refresh.svg";
 import { usePlayerBoard } from "./usePlayerBoard";
+import { DropZoneBoard } from "@/components/UI/Board/DropZoneBoard";
+import { ShipsInitial } from "@/components/Ships";
 
 const Wrapper = styled.div<{ isGameStarted: boolean }>`
   display: flex;

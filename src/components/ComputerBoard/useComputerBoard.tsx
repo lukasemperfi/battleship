@@ -11,8 +11,8 @@ import {
   selectGameState,
   setCurrentPlayer,
 } from "@/store/gameSlice";
-import { Matrix, ShotResult } from "@/services/board/boardTypes";
-import { Ship, ShipCoord } from "@/services/ships/shipsTypes";
+import { type Matrix, ShotResult } from "@/services/board/boardTypes";
+import { type Ship, type ShipCoord } from "@/services/ships/shipsTypes";
 
 interface UseComputerBoardReturn {
   currentPlayer: CurrentPlayer;

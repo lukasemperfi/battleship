@@ -1,4 +1,4 @@
-import { LocationCheckArea, Matrix, ShotResult } from "./boardTypes";
+import { type LocationCheckArea, type Matrix, ShotResult } from "./boardTypes";
 import { MATRIX_LENGTH } from "@/config/gameConfig";
 
 import {
@@ -7,10 +7,10 @@ import {
   generateRandomNumber,
 } from "@/utils/commonUtils";
 import {
-  ShipCoords,
-  ShipPlacement,
+  type ShipCoords,
+  type ShipPlacement,
   ShipOrientation,
-  Ship,
+  type Ship,
 } from "../ships/shipsTypes";
 
 const createBoardMatrix = (

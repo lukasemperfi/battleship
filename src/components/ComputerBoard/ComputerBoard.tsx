@@ -1,9 +1,8 @@
-import { Board, BoardField } from "../UI/Board";
 import { CurrentPlayer } from "@/store/gameSlice";
-import { BoardShips } from "../UI/Board/BoardShips";
 import { useComputerBoard } from "./useComputerBoard";
+import { Board, BoardField, BoardShips } from "@/components/UI/Board";
 
-export const ComputerBoard = () => {
+export const ComputerBoard = (): JSX.Element => {
   const { currentPlayer, board, onCellClick, sunkShips } = useComputerBoard();
 
   return (

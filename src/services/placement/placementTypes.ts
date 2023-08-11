@@ -1,5 +1,5 @@
-import { DropTargetMonitor, XYCoord } from "react-dnd";
-import { ShipCoords, ShipPosition } from "../ships/shipsTypes";
+import { type DropTargetMonitor, type XYCoord } from "react-dnd";
+import { type ShipCoords, type ShipPosition } from "../ships/shipsTypes";
 
 interface ShipCoordsAndPosition {
   shipCoords: ShipCoords;

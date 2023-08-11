@@ -1,6 +1,6 @@
-import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
-import styled, { FlattenSimpleInterpolation } from "styled-components";
-import { DraggableItemPosition } from "./DraggableShip";
+import { type ComponentPropsWithRef, type ReactNode, forwardRef } from "react";
+import styled, { type FlattenSimpleInterpolation } from "styled-components";
+import { type DraggableItemPosition } from "./DraggableShip";
 import { ShipOrientation } from "@/services/ships/shipsTypes";
 
 const transform = {

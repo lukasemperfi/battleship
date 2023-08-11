@@ -1,12 +1,12 @@
-import { FC, useEffect } from "react";
-import { css } from "styled-components";
+import { type FC, useEffect } from "react";
+import { FlattenSimpleInterpolation, css } from "styled-components";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "@/ItemTypes";
 
 import { ShipWrapper } from "./ShipWrapper";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import { Ship as ShipView } from "./Ship";
-import { Ship, ShipOrientation } from "@/services/ships/shipsTypes";
+import { type Ship, type ShipOrientation } from "@/services/ships/shipsTypes";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
   selectSelectedShip,
@@ -54,7 +54,7 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
     [draggableItem, isGameStarted]
   );
 
-  const getShipWrapperStyles = () => {
+  const getShipWrapperStyles = (): FlattenSimpleInterpolation => {
     const isSelectedShip = draggableItem.id === selectedShip?.id;
     const isDecksMoreOne = draggableItem.coords.length > 1;
 
@@ -68,7 +68,7 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
     `;
   };
 
-  const getShipViewStyles = () => {
+  const getShipViewStyles = (): FlattenSimpleInterpolation => {
     const isDecksMoreOne = draggableItem.coords.length > 1;
 
     return css`
@@ -80,7 +80,7 @@ export const DraggableShip: FC<DraggableShipProps> = ({ draggableItem }) => {
     preview(getEmptyImage(), { captureDraggingState: true });
   }, []);
 
-  const handleShipClick = () => {
+  const handleShipClick = (): void => {
     const isCurrentShipSelected = draggableItem.id === selectedShip?.id;
 
     if (

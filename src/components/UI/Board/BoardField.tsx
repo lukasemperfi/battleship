@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { type FC } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import { Matrix, ShotResult } from "@/services/board/boardTypes";
-import { ShipCoord } from "@/services/ships/shipsTypes";
+import { type Matrix, type ShotResult } from "@/services/board/boardTypes";
+import { type ShipCoord } from "@/services/ships/shipsTypes";
 import { BoardFieldCell } from "./BoardFieldCell";
 
 const Table = styled.div`
@@ -16,11 +16,6 @@ const Table = styled.div`
 const Row = styled.div`
   display: table-row;
 `;
-
-
-
-
-
 
 export interface BoardFieldProps {
   board: Matrix;

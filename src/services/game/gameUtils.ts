@@ -1,9 +1,9 @@
-import { ShipData } from "@/config/gameConfig";
+import { type ShipData } from "@/config/gameConfig";
 import { createArrayFromFunction } from "@/utils/commonUtils";
 import { createBoardMatrix, placeShipOnBoard } from "../board/boardService";
-import { Matrix } from "../board/boardTypes";
-import { Ship } from "../ships/shipsTypes";
-import { BoardAndShips } from "./gameTypes";
+import { type Matrix } from "../board/boardTypes";
+import { type Ship } from "../ships/shipsTypes";
+import { type BoardAndShips } from "./gameTypes";
 
 const placeShips = (
   shipData: ShipData[],

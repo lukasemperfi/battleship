@@ -1,21 +1,18 @@
 import {
-  PayloadAction,
-  SliceCaseReducers,
+  type PayloadAction,
+  type SliceCaseReducers,
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootReducers } from "./rootReducers";
-import { RootState } from "./store";
-
+import { type RootState } from "./store";
 
 import {
   createBoardMatrix,
   markSunkShipArea,
 } from "@/services/board/boardService";
-import {
-  generateRandomBoardAndShips,
-} from "@/services/game/gameService";
-import { Ship, ShipCoord } from "@/services/ships/shipsTypes";
-import { Matrix, ShotResult } from "@/services/board/boardTypes";
+import { generateRandomBoardAndShips } from "@/services/game/gameService";
+import { type Ship, type ShipCoord } from "@/services/ships/shipsTypes";
+import { type Matrix, type ShotResult } from "@/services/board/boardTypes";
 
 interface ComputerBoardReducers extends SliceCaseReducers<ComputerBoardState> {
   randomlyPlaceShips: (
@@ -95,7 +92,8 @@ export const {
   resetComputerBoardState,
 } = computerBoard.actions;
 
-export const selectComputerBoardState = (state: RootState) =>
-  state.computerBoard;
+export const selectComputerBoardState = (
+  state: RootState
+): ComputerBoardState => state.computerBoard;
 
 export const computerBoardSlice = computerBoard.reducer;

@@ -1,5 +1,5 @@
-import { Matrix } from "../board/boardTypes";
-import { Ship } from "../ships/shipsTypes";
+import { type Matrix } from "../board/boardTypes";
+import { type Ship } from "../ships/shipsTypes";
 
 type BoardAndShips = [Matrix, Ship[]];
 

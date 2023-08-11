@@ -1,13 +1,13 @@
-import { FC, useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { ShipWrapper } from "./ShipWrapper";
 import { Ship as ShipView } from "./Ship";
-import { Ship } from "@/services/ships/shipsTypes";
+import { type Ship } from "@/services/ships/shipsTypes";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
   selectIsRotationNotAllowed,
   setIsRotationNotAllowed,
 } from "@/store/playerBoardSlice";
-import { css, keyframes } from "styled-components";
+import { FlattenSimpleInterpolation, css, keyframes } from "styled-components";
 import { toogleRotate } from "@/services/placement/placementService";
 
 const fadeInOut = keyframes`
@@ -39,7 +39,7 @@ export const ShipRotatePreview: FC<ShipRotatePreviewProps> = ({
   const dispatch = useAppDispatch();
   const isRotationNotAllowed = useAppSelector(selectIsRotationNotAllowed);
 
-  const getStylesRotate = () =>
+  const getStylesRotate = (): FlattenSimpleInterpolation =>
     isRotationNotAllowed
       ? css`
           opacity: 1;
@@ -60,9 +60,13 @@ export const ShipRotatePreview: FC<ShipRotatePreviewProps> = ({
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (isRotationNotAllowed) {
-      timer = setTimeout(() => dispatch(setIsRotationNotAllowed(false)), 1000);
+      timer = setTimeout(() => {
+        dispatch(setIsRotationNotAllowed(false));
+      }, 1000);
     }
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isRotationNotAllowed]);
 
   return (

@@ -34,19 +34,19 @@ export const useGame = (): UseGameReturn => {
   const { isGameStarted, isGameOver, winner } = useAppSelector(selectGameState);
   const isPlayerReady = playerShips.length === 10 && !isGameStarted;
 
-  const startGame = () => {
+  const startGame = (): void => {
     if (isPlayerReady && !isGameStarted) {
       dispatch(setIsGameStarted(true));
     }
   };
 
-  const restartGame = () => {
+  const restartGame = (): void => {
     dispatch(resetGameState());
     dispatch(resetPlayerBoardState());
     dispatch(resetComputerBoardState());
   };
 
-  const checkGameOutcome = () => {
+  const checkGameOutcome = (): void => {
     if (isGameFinished(playerShips, computerShips)) {
       dispatch(setIsGameOver(true));
 

@@ -11,14 +11,14 @@ import {
   updateShips,
 } from "@/services/ships/shipsService";
 import {
-  Ship,
+  type Ship,
   ShipOrientation,
-  ShipPlacement,
+  type ShipPlacement,
 } from "@/services/ships/shipsTypes";
 import { placeShips } from "./gameUtils";
-import { Matrix, ShotResult } from "../board/boardTypes";
+import { type Matrix, ShotResult } from "../board/boardTypes";
 import { convertIndexesToPixels } from "../placement/placementService";
-import { BoardAndShips } from "./gameTypes";
+import { type BoardAndShips } from "./gameTypes";
 
 const generateRandomBoardAndShips = (): BoardAndShips =>
   placeShips(SHIP_DATA, (shipInfo, matrix) => {

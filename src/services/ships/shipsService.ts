@@ -1,12 +1,12 @@
-import { CELL_BORDER, ShipData } from "@/config/gameConfig";
+import { CELL_BORDER, type ShipData } from "@/config/gameConfig";
 import { v4 as uuidv4 } from "uuid";
 import { createArrayFromFunction, deepClone } from "@/utils/commonUtils";
 import {
-  ShipPlacement,
-  ShipDimensions,
-  ShipCoords,
+  type ShipPlacement,
+  type ShipDimensions,
+  type ShipCoords,
   ShipOrientation,
-  Ship,
+  type Ship,
 } from "./shipsTypes";
 
 const getShipDimensions = (
@@ -66,7 +66,7 @@ const createShip = (
     hits: 0,
     coords,
     placement,
-    name: name,
+    name,
     position,
     width,
     isShipPlaced,
@@ -98,9 +98,7 @@ const updateShips = (
 };
 
 const addShip = (ships: Ship[], newShip: Ship): Ship[] => {
-
   const isShipExists = ships.some((ship) => ship.id === newShip.id);
-
 
   if (isShipExists) {
     return ships;
@@ -108,6 +106,5 @@ const addShip = (ships: Ship[], newShip: Ship): Ship[] => {
 
   return [...ships, newShip];
 };
-
 
 export { createShip, getShipCoords, addShip, updateShip, updateShips };

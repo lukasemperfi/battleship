@@ -1,7 +1,5 @@
 import { type FC } from "react";
-import styled, { FlattenSimpleInterpolation } from "styled-components";
-
-
+import styled, { type FlattenSimpleInterpolation } from "styled-components";
 
 export interface ShipProps {
   width?: number;

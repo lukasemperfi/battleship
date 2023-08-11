@@ -1,10 +1,10 @@
 import {
-  PayloadAction,
-  SliceCaseReducers,
+  type PayloadAction,
+  type SliceCaseReducers,
   createSlice,
 } from "@reduxjs/toolkit";
 import { RootReducers } from "./rootReducers";
-import { RootState } from "./store";
+import { type RootState } from "./store";
 
 export enum CurrentPlayer {
   PLAYER = "Player",
@@ -71,6 +71,6 @@ export const {
   resetGameState,
 } = game.actions;
 
-export const selectGameState = (state: RootState) => state.game;
+export const selectGameState = (state: RootState): GameState => state.game;
 
 export const gameSlice = game.reducer;

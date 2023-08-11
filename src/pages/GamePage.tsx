@@ -1,29 +1,12 @@
 import styled from "styled-components";
-import { useEffect } from "react";
-import { PlayerBoard } from "../components/PlayerBoard";
-import { PageContainer } from "@/components/UI/PageContainer/PageContainer";
-import { GameBoardContainer } from "@/components/UI/GameBoardContainer/GameBoardContainer";
-import {
-  resetPlayerBoardState,
-  selectPlayerBoardState,
-} from "@/store/playerBoardSlice";
-import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import {
-  CurrentPlayer,
-  resetGameState,
-  selectGameState,
-  setIsGameOver,
-  setIsGameStarted,
-  setWinner,
-} from "@/store/gameSlice";
-import { ComputerBoard } from "@/components/ComputerBoard/ComputerBoard";
-import {
-  resetComputerBoardState,
-  selectComputerBoardState,
-} from "@/store/computerBoardSlice";
-import { checkWin, isGameFinished } from "@/services/game/gameService";
-import { Button } from "@/components/UI/Button/Button";
+import { CurrentPlayer } from "@/store/gameSlice";
+
 import { useGame } from "./useGame";
+import { PageContainer } from "@/components/UI/PageContainer";
+import { GameBoardContainer } from "@/components/UI/GameBoardContainer";
+import { PlayerBoard } from "@/components/PlayerBoard";
+import { ComputerBoard } from "@/components/ComputerBoard";
+import { Button } from "@/components/UI/Button";
 
 const Footer = styled.footer`
   display: flex;

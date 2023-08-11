@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import { DraggableShip } from "@/components/UI/Ship/DraggableShip";
-import { Ship } from "@/services/ships/shipsTypes";
+import { type Ship } from "@/services/ships/shipsTypes";
 import styled from "styled-components";
 
 interface ShipsInitialProps {

@@ -20,8 +20,8 @@ import {
   selectGameState,
   setCurrentPlayer,
 } from "@/store/gameSlice";
-import { Ship, ShipCoord } from "@/services/ships/shipsTypes";
-import { Matrix, ShotResult } from "@/services/board/boardTypes";
+import { type Ship, type ShipCoord } from "@/services/ships/shipsTypes";
+import { type Matrix, ShotResult } from "@/services/board/boardTypes";
 import { isGameFinished } from "@/services/game/gameService";
 import { computerShot } from "@/services/AIService/AIService";
 import { DifficultyLevel } from "@/services/AIService/AIServiceTypes";
@@ -70,11 +70,11 @@ export const usePlayerBoard = (): UsePlayerBoardReturn => {
     }
   }, [currentPlayer, playerBoard]);
 
-  const randomlyPlaceShipsHandler = () => {
+  const randomlyPlaceShipsHandler = (): void => {
     dispatch(randomlyPlaceShips());
   };
 
-  const rotateShip = () => {
+  const rotateShip = (): void => {
     if (!selectedShip) {
       return;
     }
@@ -103,7 +103,7 @@ export const usePlayerBoard = (): UsePlayerBoardReturn => {
     }
   };
 
-  const resetShipPlacement = () => {
+  const resetShipPlacement = (): void => {
     if (playerShips.length === 0) {
       return;
     }
@@ -136,7 +136,7 @@ export const usePlayerBoard = (): UsePlayerBoardReturn => {
     }
   };
 
-  const makeComputerShot = async () => {
+  const makeComputerShot = async (): Promise<void> => {
     if (isGameFinished(playerShips, computerShips)) {
       return;
     }
