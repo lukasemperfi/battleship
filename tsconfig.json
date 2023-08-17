@@ -14,11 +14,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node", "vite-plugin-svgr/client", "jest"],
+    "types": ["node", "vite-plugin-svgr/client"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src",  "./jest-setup.ts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
